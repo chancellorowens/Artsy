@@ -22,7 +22,7 @@ import javafx.stage.Modality;
 public class RightVBox extends VBox
 {
     static String DEFAULT3 = "https://github.com/mepcotterell-cs1302/cs1302-artsy/blob/master/resources/default.png?raw=true";
-    Image di3;    
+    static Image di3;    
     Image si3;
     static ImageView iv3 = new ImageView();
     static Label l3 = new Label("Result");

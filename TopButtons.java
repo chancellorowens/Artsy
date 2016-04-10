@@ -36,7 +36,7 @@ public class TopButtons extends FlowPane
 
 	checkers.setOnAction(event -> 
 	    {
-		RightVBox.iv3.setImage(MyArtsy.doCheckers(copyImage(OpenMenu.getImage1()),copyImage(OpenMenu.getImage2()),10));
+		RightVBox.iv3.setImage(MyArtsy.doCheckers(copyImage(OpenMenu.getImage1()),copyImage(OpenMenu.getImage2()),30));
 	    });
 	horizontal.setOnAction(event -> 
 	    {

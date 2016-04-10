@@ -15,6 +15,38 @@ public class MyArtsy //implements Artsy
     //@Override
     public static Image doCheckers(Image src1, Image src2, int size) 
     {	
+	
+	int width = (int) src1.getWidth();
+	int height = (int) src1.getHeight();
+	
+	WritableImage ret = new WritableImage(width, height);
+	PixelReader pr1 = src1.getPixelReader();
+	PixelReader pr2 = src2.getPixelReader();
+	PixelWriter pw = ret.getPixelWriter();
+	int count = 0;
+	int start = 0;
+	for (int y = 0; y < height; ++y) 
+	    {
+		for (int x = 0; x < width; ++x) 
+		    {
+			if(count < size)
+			    {
+				pw.setArgb(x, y, pr1.getArgb(x, y));
+				count++;
+			    }
+			if(count >= size)
+			    {
+				pw.setArgb(x, y, pr2.getArgb(x, y));
+				count++;
+			    }
+			if(count == size + 1)
+			    count = 0;
+		    } // for
+	    } // for
+
+	return ret;
+
+	/*
 	int width = (int) src1.getWidth();
 	int height = (int) src1.getHeight();
 	
@@ -43,7 +75,7 @@ public class MyArtsy //implements Artsy
 		} // for
 	    } // for
 
-	return ret;
+	return ret;*/
     } // doCheckers
 
     //@Override
@@ -113,6 +145,43 @@ public class MyArtsy //implements Artsy
     //@Override
     public static Image doRotate(Image src, double degrees) 
     {
+        double width =  src.getWidth();
+	double  height =  src.getHeight();
+	int widthI = (int)width;
+	int heightI = (int)height;
+	WritableImage ret = new WritableImage(widthI, heightI);
+	PixelReader pr = src.getPixelReader();
+	PixelWriter pw = ret.getPixelWriter();
+	double deltaX = 0;
+	double deltaY = 0;
+	double tempx;
+	double tempy;
+	degrees = Math.toRadians(degrees);
+	
+	for (int x = 0; x < width; ++x) 
+	    {
+		for (int y = 0; y < height; ++y) 
+		    {   
+			//			if(deltaX < width &&deltaY < height)
+			    {    
+				tempx = x - width/2;
+				tempy = y - width/2;
+				deltaX = tempx * Math.cos(degrees) + tempy * Math.sin(degrees);
+				deltaY = -tempx * Math.sin(degrees) + tempy * Math.cos(degrees);
+				deltaX += width/2;
+				deltaY += width/2;
+				System.out.println("DeltaX = " + deltaX + " DeltaY = " + deltaY);
+				pw.setArgb((int)deltaX, (int)deltaY, pr.getArgb((int)deltaX, (int)deltaY));
+			    }
+		    } // for
+	    } // for
+
+		return ret;
+    } // doRotate
+} // MyArtsy
+
+
+/*
 	int width = (int) src.getWidth();
 	int height = (int) src.getHeight();
 	WritableImage ret = new WritableImage(width, height);
@@ -130,7 +199,9 @@ public class MyArtsy //implements Artsy
 	} // for
 
 	return ret;
-    } // doRotate
-} // MyArtsy
+*/
 
 
+	/*
+
+	*/

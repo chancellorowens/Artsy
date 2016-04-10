@@ -36,7 +36,7 @@ public class RotatePane extends BorderPane
 	    {
 		MyArtsy.doRotate(OpenMenu.getImage1(),Double.parseDouble(textField.getText()));
 	    });
-	cancel.setOnAction(event -> );
+	//cancel.setOnAction(event -> );
     }
 
 }
